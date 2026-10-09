@@ -101,7 +101,7 @@ Browser A <------ WebRTC: video and audio, encrypted, peer to peer ------> Brows
 ### 1. Clone the project
 
 ```bash
-git clone https://github.com/TanimMohammedKhan/video-conference-app.git
+git clone https://github.com/TanimMohammedKhan/CodeAlpha_video-conference-app.git
 cd video-conference-app
 ```
 
