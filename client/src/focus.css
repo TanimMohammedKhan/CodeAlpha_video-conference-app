@@ -1,0 +1,341 @@
+/* ---------- Header chip ---------- */
+.timer-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  border: 1px solid rgba(131, 102, 240, 0.5);
+  border-radius: 12px;
+  background: rgba(108, 71, 224, 0.18);
+  color: #e4dcff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.timer-chip.break {
+  border-color: rgba(61, 220, 151, 0.5);
+  background: rgba(61, 220, 151, 0.14);
+  color: #aef2d3;
+}
+
+.run-dot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: #3ddc97;
+}
+
+/* ---------- Dark buttons inside the side panels ---------- */
+.timer-body .btn-ghost,
+.notes-form .btn-ghost,
+.notes-footer .btn-ghost {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #d6cff0;
+}
+
+.timer-body .btn-ghost:hover:not(:disabled),
+.notes-form .btn-ghost:hover:not(:disabled),
+.notes-footer .btn-ghost:hover:not(:disabled) {
+  background: var(--ink-3);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* ---------- Timer panel ---------- */
+.timer-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 16px;
+  overflow-y: auto;
+}
+
+.timer-ring {
+  position: relative;
+  flex-shrink: 0;
+  width: 190px;
+  height: 190px;
+}
+
+.timer-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 10;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: #8366f0;
+  stroke-linecap: round;
+  stroke-width: 10;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+.ring-progress.break {
+  stroke: #3ddc97;
+}
+
+.timer-readout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.timer-time {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.timer-status {
+  color: #9d93bd;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.timer-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.seg {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--ink-3);
+}
+
+.seg button {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: #cfc8e8;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seg button.active {
+  background: var(--gradient);
+  color: #ffffff;
+}
+
+.seg.break button.active {
+  background: #2f9e6e;
+}
+
+.minutes-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minutes-row .seg {
+  flex: 1;
+}
+
+.minutes-input {
+  width: 74px;
+  padding: 9px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: var(--ink);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.minutes-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.timer-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.timer-actions .btn {
+  flex: 1;
+}
+
+.timer-note {
+  color: #9d93bd;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* ---------- Notes panel ---------- */
+.notes-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.notes-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 14px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.notes-empty {
+  margin: auto;
+  color: #9d93bd;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.note-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--ink-3);
+}
+
+.note-item.done .note-text {
+  color: #9d93bd;
+  text-decoration: line-through;
+}
+
+.note-check {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  accent-color: #3ddc97;
+  cursor: pointer;
+}
+
+.note-bullet {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: #8366f0;
+}
+
+.note-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.note-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.note-meta {
+  margin-top: 2px;
+  color: #9d93bd;
+  font-size: 0.72rem;
+}
+
+.note-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.note-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.note-btn:hover {
+  background: var(--primary);
+}
+
+.note-btn.danger:hover {
+  background: #e5484d;
+}
+
+.note-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: var(--ink);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.note-input::placeholder {
+  color: #7d7499;
+}
+
+.note-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 71, 224, 0.3);
+}
+
+.notes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.notes-form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.notes-form-row .btn {
+  padding: 9px 16px;
+}
+
+.notes-footer {
+  padding: 0 12px 12px;
+}
+
+.notes-footer .btn {
+  width: 100%;
+}

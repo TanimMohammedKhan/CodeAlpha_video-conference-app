@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Secrets: never commit these
+.env
+.env.*
+!.env.example
+
+# Uploaded (encrypted) meeting files
+server/uploads/
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

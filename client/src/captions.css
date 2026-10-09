@@ -1,0 +1,156 @@
+/* ---------- Live captions on the video ---------- */
+.caption-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(640px, calc(100% - 48px));
+  pointer-events: none;
+}
+
+/* Keep the captions clear of an open side panel */
+.call-main:has(.chat-panel) .caption-overlay {
+  width: max(260px, calc(100% - 340px - 72px));
+}
+
+.caption-line {
+  align-self: flex-start;
+  max-width: 100%;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(10, 7, 20, 0.82);
+  backdrop-filter: blur(6px);
+  font-size: 1rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.caption-line.interim {
+  opacity: 0.8;
+}
+
+.caption-name {
+  margin-right: 8px;
+  color: #c4b5fd;
+  font-weight: 700;
+}
+
+/* ---------- Captions panel ---------- */
+.cc-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.cc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d6cff0;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.cc-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.cc-toggle.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cc-label {
+  color: #d6cff0;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.cc-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: var(--ink);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.cc-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.cc-listening {
+  color: #3ddc97;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.cc-hint,
+.cc-privacy {
+  color: #9d93bd;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.cc-warning {
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(245, 184, 61, 0.14);
+  color: #f5c866;
+  font-size: 0.82rem;
+}
+
+.cc-error {
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(229, 72, 77, 0.16);
+  color: #ffb4b7;
+  font-size: 0.82rem;
+}
+
+.cc-transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-empty {
+  color: #9d93bd;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.cc-entry {
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: var(--ink-3);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.cc-entry-meta {
+  margin-bottom: 2px;
+  color: #9d93bd;
+  font-size: 0.72rem;
+}
+
+.cc-entry-meta strong {
+  margin-right: 6px;
+  color: #c4b5fd;
+}

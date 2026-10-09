@@ -1,0 +1,252 @@
+/* ---------- Call layout ---------- */
+.call-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.call-main .video-grid {
+  min-width: 0;
+  overflow: auto;
+}
+
+/* Presentation layout: big screen on top, participants in a strip below */
+.video-grid.with-screen {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  grid-auto-rows: 150px;
+}
+
+.tile.screen {
+  grid-column: 1 / -1;
+  background: #000000;
+}
+
+.tile.screen video {
+  object-fit: contain;
+}
+
+/* ---------- Fullscreen ---------- */
+.icon-btn {
+  padding: 10px;
+}
+
+.tile-fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(18, 13, 34, 0.6);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.tile:hover .tile-fullscreen-btn,
+.tile-fullscreen-btn:focus-visible,
+.tile:fullscreen .tile-fullscreen-btn {
+  opacity: 1;
+}
+
+.tile-fullscreen-btn:hover {
+  background: var(--ink-3);
+}
+
+.tile:fullscreen {
+  border: none;
+  border-radius: 0;
+  background: #000000;
+}
+
+.tile:fullscreen video {
+  object-fit: contain;
+}
+
+/* Touch screens have no hover, so always show the button */
+@media (hover: none) {
+  .tile-fullscreen-btn {
+    opacity: 1;
+  }
+}
+
+/* ---------- Control bar extras ---------- */
+.control-btn {
+  position: relative;
+}
+
+.control-btn.active {
+  border-color: transparent;
+  background: var(--gradient);
+}
+
+.control-btn.active:hover:not(:disabled) {
+  background: var(--gradient);
+  filter: brightness(1.1);
+}
+
+.unread-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: #e5484d;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* ---------- Chat panel ---------- */
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 340px;
+  margin: 0 24px 8px 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background: var(--ink-2);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.chat-close {
+  display: flex;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #9d93bd;
+  cursor: pointer;
+}
+
+.chat-close:hover {
+  background: var(--ink-3);
+  color: #ffffff;
+}
+
+.chat-messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.chat-empty {
+  margin: auto;
+  color: #9d93bd;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 90%;
+}
+
+.chat-message.mine {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.chat-meta {
+  font-size: 0.75rem;
+  color: #9d93bd;
+}
+
+.chat-bubble {
+  padding: 9px 13px;
+  border-radius: 14px;
+  background: var(--ink-3);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.chat-message.mine .chat-bubble {
+  background: var(--gradient);
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chat-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: var(--ink);
+  color: #ffffff;
+  font: inherit;
+}
+
+.chat-form input::placeholder {
+  color: #7d7499;
+}
+
+.chat-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 71, 224, 0.3);
+}
+
+.chat-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  border: none;
+  border-radius: 12px;
+  background: var(--gradient);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.chat-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 800px) {
+  .chat-panel {
+    position: fixed;
+    inset: 70px 12px 90px 12px;
+    z-index: 20;
+    width: auto;
+    margin: 0;
+  }
+}

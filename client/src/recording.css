@@ -1,0 +1,173 @@
+/* ---------- Header chips ---------- */
+.rec-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(229, 72, 77, 0.5);
+  border-radius: 12px;
+  background: rgba(229, 72, 77, 0.14);
+  color: #ffb4b7;
+  font: inherit;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+button.rec-chip {
+  cursor: pointer;
+}
+
+.rec-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e5484d;
+  animation: rec-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes rec-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 0 6px rgba(229, 72, 77, 0);
+  }
+}
+
+/* ---------- Control bar button ---------- */
+.control-btn.recording {
+  border-color: rgba(229, 72, 77, 0.6);
+}
+
+.control-btn.recording svg {
+  color: #e5484d;
+  fill: #e5484d;
+}
+
+/* ---------- Record panel ---------- */
+.rec-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.rec-body .btn-ghost {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #d6cff0;
+}
+
+.rec-body .btn-ghost:hover:not(:disabled) {
+  background: var(--ink-3);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.rec-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 12px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: var(--ink-3);
+  text-align: center;
+}
+
+.rec-status.live {
+  border-color: rgba(229, 72, 77, 0.5);
+}
+
+.rec-time {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.rec-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #9d93bd;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.rec-state.live {
+  color: #ffb4b7;
+}
+
+.btn-rec {
+  background: #e5484d;
+  color: #ffffff;
+  box-shadow: 0 8px 18px -6px rgba(229, 72, 77, 0.55);
+}
+
+.btn-rec:hover:not(:disabled) {
+  background: #cf3b40;
+}
+
+.rec-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d6cff0;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.rec-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.rec-others {
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(229, 72, 77, 0.12);
+  color: #ffb4b7;
+  font-size: 0.82rem;
+}
+
+.rec-hint {
+  color: #9d93bd;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.rec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: #b9b0d6;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.rec-warning {
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(245, 184, 61, 0.14);
+  color: #f5c866;
+  font-size: 0.82rem;
+}
+
+.rec-error {
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(229, 72, 77, 0.16);
+  color: #ffb4b7;
+  font-size: 0.82rem;
+}
